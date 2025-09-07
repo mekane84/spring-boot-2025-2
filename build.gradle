@@ -31,6 +31,16 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
+processResources {
+    dependsOn 'copyFrontEndToBuild'
+}
+
+tasks.register('copyFrontEndToBuild', Copy) {
+    dependsOn 'npmBuild'
+    from "$projectDir/src/vue-front-end/dist"
+    into 'src/main/resources/static'
+}
+
 tasks.register('npmBuild', Exec) {
     workingDir 'src/vue-front-end/'
     commandLine 'npm.cmd', 'run', 'build'
