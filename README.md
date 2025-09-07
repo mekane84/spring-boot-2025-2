@@ -2,6 +2,6 @@
 
 ### Setup
 
-Instructions to setup...
+Instructions to set up spring boot + vue + aws...
 
 * [Test](https://docs.gradle.org)
