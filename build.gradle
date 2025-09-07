@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.5.5'
     id 'io.spring.dependency-management' version '1.1.7'
+    id 'com.github.node-gradle.node' version '3.1.1' // Use the latest stable version
 }
 
 group = 'com.example'
@@ -28,4 +29,9 @@ dependencies {
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+tasks.register('npmBuild', Exec) {
+    workingDir 'src/vue-front-end/'
+    commandLine 'npm.cmd', 'run', 'build'
 }
